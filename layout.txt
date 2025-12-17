@@ -1,0 +1,30 @@
+/megacorvega-timeline
+│
+├── /assets
+│   ├── /css
+│   │   └── style.css
+│   └── /images
+│       └── (logo, icons, etc.)
+│
+├── /js
+│   ├── /components         <-- UI Rendering logic
+│   │   ├── ganttChart.js   (D3 chart logic)
+│   │   ├── ganttView.js    (The project cards/rows HTML generation)
+│   │   ├── linearView.js   (The "Action Hub" list logic)
+│   │   ├── modals.js       (Reason modal, confirmation, shortcuts)
+│   │   └── tabs.js         (Tab switching and drag-and-drop)
+│   │
+│   ├── /core               <-- The "Brains" of the app
+│   │   ├── state.js        (Holds the `projects` array and history)
+│   │   ├── events.js       (Global event listener setup)
+│   │   └── utils.js        (Dates, shortcuts, helper functions)
+│   │
+│   ├── /managers           <-- Business Logic (CRUD operations)
+│   │   ├── dataManager.js  (Load/Save to localStorage, Import/Export)
+│   │   ├── taskManager.js  (Add/Edit/Delete/Move tasks)
+│   │   └── dependencyManager.js (Calculating dates, resolving links)
+│   │
+│   ├── punchlist.js        (Keep this separate as it's a distinct sub-module)
+│   └── main.js             (Entry point: imports everything and initializes)
+│
+└── index.html
