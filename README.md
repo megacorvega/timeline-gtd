@@ -75,3 +75,36 @@ This view gives you a clear, chronological list of all tasks and subtasks that h
 5.  **Use the Other Views:** Switch to the "List" tab for brainstorming and checklists. Check the "Task Load" and "Upcoming" tabs to stay on top of your workload.
 6.  **Log Changes:** When you change a date or delete an item, a modal will appear prompting for a reason. This is stored in the project's "Change Log".
 7.  **Import/Export:** Use the buttons in the header to save your project data to a `.json` file or to load data from a file.
+
+### Layout
+
+/megacorvega-timeline-gtd
+│
+├── /assets
+│   ├── /css
+│   │   └── style.css
+│   └── /images
+│       └── (logo, icons, etc.)
+│
+├── /js
+│   ├── /components         <-- UI Rendering logic
+│   │   ├── ganttChart.js   (D3 chart logic)
+│   │   ├── ganttView.js    (The project cards/rows HTML generation)
+│   │   ├── linearView.js   (The "Action Hub" list logic)
+│   │   ├── modals.js       (Reason modal, confirmation, shortcuts)
+│   │   └── tabs.js         (Tab switching and drag-and-drop)
+│   │
+│   ├── /core               <-- The "Brains" of the app
+│   │   ├── state.js        (Holds the `projects` array and history)
+│   │   ├── events.js       (Global event listener setup)
+│   │   └── utils.js        (Dates, shortcuts, helper functions)
+│   │
+│   ├── /managers           <-- Business Logic (CRUD operations)
+│   │   ├── dataManager.js  (Load/Save to localStorage, Import/Export)
+│   │   ├── taskManager.js  (Add/Edit/Delete/Move tasks)
+│   │   └── dependencyManager.js (Calculating dates, resolving links)
+│   │
+│   ├── punchlist.js        (Keep this separate as it's a distinct sub-module)
+│   └── main.js             (Entry point: imports everything and initializes)
+│
+└── index.html
