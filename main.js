@@ -1,3 +1,4 @@
+// Change these from './core/...' to './core/...' ONLY if main.js is in the /js folder
 import { state } from './core/state.js';
 import * as Utils from './core/utils.js';
 import * as DataManager from './managers/dataManager.js';
