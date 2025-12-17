@@ -6,7 +6,7 @@ import * as TaskManager from './js/managers/taskManager.js';
 import * as DependencyManager from './js/managers/dependencyManager.js';
 import * as GanttView from './js/components/ganttView.js';
 import * as LinearView from './js/components/linearView.js';
-import * as Charts from './js/components/charts.js';
+import * as Charts from './js/components/ganttChart.js';
 import * as Modals from './js/components/modals.js';
 import * as Tabs from './js/components/tabs.js';
 import { initEvents } from './js/core/events.js';
