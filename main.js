@@ -1,15 +1,15 @@
-// Change these from './core/...' to './core/...' ONLY if main.js is in the /js folder
-import { state } from './core/state.js';
-import * as Utils from './core/utils.js';
-import * as DataManager from './managers/dataManager.js';
-import * as TaskManager from './managers/taskManager.js';
-import * as DependencyManager from './managers/dependencyManager.js';
-import * as GanttView from './components/ganttView.js';
-import * as LinearView from './components/linearView.js';
-import * as Charts from './components/charts.js';
-import * as Modals from './components/modals.js';
-import * as Tabs from './components/tabs.js';
-import { initEvents } from './core/events.js';
+/* Corrected imports in main.js */
+import { state } from './js/core/state.js';
+import * as Utils from './js/core/utils.js';
+import * as DataManager from './js/managers/dataManager.js';
+import * as TaskManager from './js/managers/taskManager.js';
+import * as DependencyManager from './js/managers/dependencyManager.js';
+import * as GanttView from './js/components/ganttView.js';
+import * as LinearView from './js/components/linearView.js';
+import * as Charts from './js/components/charts.js';
+import * as Modals from './js/components/modals.js';
+import * as Tabs from './js/components/tabs.js';
+import { initEvents } from './js/core/events.js';
 
 // --- INITIALIZATION ---
 
