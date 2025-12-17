@@ -24,7 +24,9 @@
         <div class="modal-card bg-white dark:bg-slate-800 p-6 rounded-lg shadow-xl w-full max-w-md border border-gray-200 dark:border-gray-700">
             <h3 id="reason-modal-title" class="text-lg font-bold mb-4">Reason for Change</h3>
             <p id="reason-modal-details" class="text-sm text-gray-600 dark:text-gray-400 mb-4"></p>
-            <textarea id="reason-comment" class="w-full p-2 border rounded-md dark:bg-slate-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" rows="3" placeholder="Please provide a brief reason..."></textarea>
+            <view-textarea>
+                <textarea id="reason-comment" class="w-full p-2 border rounded-md dark:bg-slate-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" rows="3" placeholder="Please provide a brief reason..."></textarea>
+            </view-textarea>
             
             <div class="mt-2 flex items-center">
                 <input type="checkbox" id="log-change" class="custom-checkbox mr-2" checked>
@@ -54,14 +56,11 @@
         <div class="modal-card bg-white dark:bg-slate-800 p-6 rounded-lg shadow-xl w-full max-w-3xl relative max-h-[80vh] overflow-y-auto border border-gray-200 dark:border-gray-700">
             <button id="close-shortcuts-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">&times;</button>
             <h3 class="text-xl font-bold mb-6">Keyboard Shortcuts</h3>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-sm">
                 <div>
                     <h4 class="font-bold text-blue-500 mb-2 uppercase text-xs tracking-wider">General</h4>
                     <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700"><span>Toggle Shortcuts</span><kbd class="bg-gray-100 dark:bg-gray-700 px-2 rounded font-mono">?</kbd></div>
                     <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700"><span>Switch Tabs</span><kbd class="bg-gray-100 dark:bg-gray-700 px-2 rounded font-mono">Ctrl + Alt + Arrows</kbd></div>
-                    <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700"><span>Undo</span><kbd class="bg-gray-100 dark:bg-gray-700 px-2 rounded font-mono">Ctrl + Z</kbd></div>
-                    <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700"><span>Redo</span><kbd class="bg-gray-100 dark:bg-gray-700 px-2 rounded font-mono">Ctrl + Y</kbd></div>
                 </div>
                 <div>
                     <h4 class="font-bold text-blue-500 mb-2 uppercase text-xs tracking-wider">Appearance</h4>
@@ -70,6 +69,9 @@
                         <select id="theme-select" class="bg-gray-100 dark:bg-gray-700 border-none rounded px-2 py-1 text-xs">
                             <option value="default">Default</option>
                             <option value="dracula">Dracula</option>
+                            <option value="solarized">Solarized</option>
+                            <option value="monokai">Monokai</option>
+                            <option value="nord">Nord</option>
                         </select>
                     </div>
                 </div>
@@ -77,15 +79,11 @@
         </div>
     </div>
 
-    <div id="dependency-mode-banner" class="hidden sticky top-0 bg-blue-600 text-white text-center py-2 z-40 shadow-md">
-        </div>
-    
+    <div id="dependency-mode-banner" class="hidden sticky top-0 bg-blue-600 text-white text-center py-2 z-40 shadow-md"></div>
     <div id="dependency-tooltip" class="hidden absolute z-[1002] p-3 bg-white dark:bg-slate-800 border dark:border-gray-700 rounded-lg shadow-xl text-xs w-max max-w-xs pointer-events-none"></div>
-
     <div id="chart-tooltip" class="chart-tooltip hidden absolute z-[1002] p-2 bg-black/80 text-white text-xs rounded pointer-events-none"></div>
 
     <div class="container mx-auto px-4 sm:px-5 pb-4 sm:pb-5 max-w-6xl">
-
         <div class="sticky top-0 z-20 bg-gray-50/95 dark:bg-gray-900/95 backdrop-blur-sm py-4 mb-5 border-b border-gray-200 dark:border-gray-800">
             <header class="flex justify-between items-center">
                 <div class="flex-none">
@@ -93,45 +91,33 @@
                         <span class="text-gray-900 dark:text-white">time</span><span class="text-blue-600">line</span>
                     </h1>
                 </div>
-                
                 <div class="flex-grow flex justify-center">
-                     <div id="main-tabs" class="tabs-pill relative bg-gray-200 dark:bg-gray-800 p-1 rounded-full flex gap-1">
-                        </div>
+                     <div id="main-tabs" class="tabs-pill relative bg-gray-200 dark:bg-gray-800 p-1 rounded-full flex gap-1"></div>
                 </div>
-
-                <div class="flex-none">
-                    <div class="flex items-center gap-2">
-                        <button id="undo-btn" class="btn-icon" title="Undo" disabled>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg>
-                        </button>
-                        <button id="redo-btn" class="btn-icon" title="Redo" disabled>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 10h-10a8 8 0 00-8 8v2M21 10l-6 6m6-6l-6-6" /></svg>
-                        </button>
-                        
-                        <div class="h-6 w-px bg-gray-300 dark:bg-gray-700 mx-1"></div>
-
-                        <button id="import-btn" class="btn-secondary px-3 py-1.5 text-xs font-semibold rounded-md">Import</button>
-                        <button id="export-btn" class="btn-secondary px-3 py-1.5 text-xs font-semibold rounded-md">Export</button>
-                        
-                        <input type="file" id="import-file" class="hidden" accept=".json">
-
-                        <div class="h-6 w-px bg-gray-300 dark:bg-gray-700 mx-1"></div>
-
-                        <button id="dark-mode-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                            <svg id="dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                            <svg id="light-icon" class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" clip-rule="evenodd"></path></svg>
-                        </button>
-                        
-                        <button id="shortcuts-btn" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        </button>
-                    </div>
+                <div class="flex-none flex items-center gap-2">
+                    <button id="undo-btn" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700" title="Undo" disabled>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg>
+                    </button>
+                    <button id="redo-btn" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700" title="Redo" disabled>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 10h-10a8 8 0 00-8 8v2M21 10l-6 6m6-6l-6-6" /></svg>
+                    </button>
+                    <div class="h-6 w-px bg-gray-300 dark:bg-gray-700 mx-1"></div>
+                    <button id="import-btn" class="btn-secondary px-3 py-1.5 text-xs font-semibold rounded-md">Import</button>
+                    <button id="export-btn" class="btn-secondary px-3 py-1.5 text-xs font-semibold rounded-md">Export</button>
+                    <input type="file" id="import-file" class="hidden" accept=".json">
+                    <div class="h-6 w-px bg-gray-300 dark:bg-gray-700 mx-1"></div>
+                    <button id="dark-mode-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <svg id="dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="light-icon" class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <button id="shortcuts-btn" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </button>
                 </div>
             </header>
         </div>
 
         <div id="main-tab-panel-projects">
-            
             <div id="project-view-controls" class="flex justify-center mb-6 hidden">
                 <div class="tabs-pill relative bg-gray-200 dark:bg-gray-800 p-1 rounded-full flex gap-1">
                     <div id="project-view-glider" class="glider absolute top-1 bottom-1 bg-white dark:bg-slate-600 rounded-full shadow-sm transition-all duration-300"></div>
@@ -143,29 +129,22 @@
             <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
                 <div class="flex flex-col sm:flex-row gap-3 items-center">
                     <input type="text" id="new-project-name" placeholder="Enter new project name..." class="flex-grow w-full px-3 py-2 bg-gray-50 dark:bg-slate-900 border border-gray-300 dark:border-gray-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" onkeydown="if(event.key==='Enter') timelineApp.addProject()">
-                    
                     <div class="date-input-container">
                         <input type="text" id="new-project-start-date" placeholder="Start" class="date-input w-28" data-type="new-project-start" oninput="timelineApp.formatDateInput(event)" onblur="timelineApp.handleManualDateInput(event)" onkeydown="timelineApp.handleDateInputKeydown(event)">
                     </div>
-                    
                     <div class="date-input-container">
                         <input type="text" id="new-project-end-date" placeholder="End" class="date-input w-28" data-type="new-project-end" oninput="timelineApp.formatDateInput(event)" onblur="timelineApp.handleManualDateInput(event)" onkeydown="timelineApp.handleDateInputKeydown(event)">
                     </div>
-                    
-                    <button id="add-project-btn" class="w-full sm:w-auto btn-primary text-white font-semibold rounded-lg px-4 py-2 text-sm">
-                        Add Project
-                    </button>
+                    <button id="add-project-btn" class="w-full sm:w-auto btn-primary text-white font-semibold rounded-lg px-4 py-2 text-sm">Add Project</button>
                 </div>
             </div>
 
             <div class="flex justify-end mb-4">
                 <select id="upcoming-project-filter" class="text-xs bg-transparent border-none text-gray-400 focus:ring-0 cursor-pointer">
                     <option value="all">Show All Projects</option>
-                    </select>
+                </select>
             </div>
-
             <div id="projects-container" class="space-y-6"></div>
-            
             <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
                 <button id="toggle-deleted-log-btn" class="text-xs font-semibold text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 flex items-center gap-1 mb-2 hidden">
                     <svg id="deleted-log-chevron" class="w-4 h-4 chevron -rotate-90" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
@@ -193,10 +172,9 @@
                 <div id="overall-load-legend" class="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-gray-600 dark:text-gray-400"></div>
             </div>
         </div>
-
     </div>
 
     <script src="js/punchlist.js"></script>
     <script type="module" src="js/main.js"></script>
-    
+</body>
 </html>
