@@ -2,11 +2,11 @@ import { state } from './state.js';
 import * as Utils from './utils.js';
 import * as DataManager from '../managers/dataManager.js';
 import * as TaskManager from '../managers/taskManager.js';
-import * as Views from '../components/views.js'; 
-import * as Charts from '../components/charts.js';
+import * as Views from '../components/ganttView.js'; 
+import * as Charts from '../components/ganttChart.js';
 import * as Modals from '../components/modals.js';
 import { showMainTab, updateTabIndicator } from '../components/tabs.js';
-import { drawOverallLoadChart } from '../components/charts.js';
+import { drawOverallLoadChart } from '../components/ganttChart.js';
 
 export function initEvents() {
     // --- GLOBAL WINDOW/DOCUMENT EVENTS ---

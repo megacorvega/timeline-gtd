@@ -1,7 +1,7 @@
 import { state } from '../core/state.js';
 import { parseDate, formatDate, getPlannedDateForProgress, getBoundaryDate } from '../core/utils.js'; 
 import { saveState } from '../managers/dataManager.js';
-import { renderProjects } from './views.js';
+import { renderProjects } from './ganttView.js';
 
 // --- CHART HELPERS ---
 

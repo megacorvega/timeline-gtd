@@ -1,5 +1,5 @@
 import { state } from '../core/state.js';
-import { drawChart, drawOverallLoadChart } from './charts.js';
+import { drawChart, drawOverallLoadChart } from './ganttChart.js';
 
 // --- INITIALIZATION ---
 

@@ -1,6 +1,6 @@
 import { state } from '../core/state.js';
 import { calculateRollups, resolveDependencies } from '../managers/dependencyManager.js';
-import { drawChart } from './charts.js';
+import { drawChart } from './ganttChart.js';
 import { formatDate, parseDate, getDurationProgress, getDaysLeft, formatLogTimestamp } from '../core/utils.js';
 import { renderLinearView } from './linearView.js'; 
 

@@ -1,7 +1,7 @@
 import { state } from '../core/state.js';
 import { saveState } from './dataManager.js';
 import { renderProjects } from '../components/ganttView.js'; 
-import { drawChart } from '../components/charts.js';
+import { drawChart } from '../components/ganttChart.js';
 
 const SINGLE_ACTIONS_PROJECT_ID = 999999; 
 

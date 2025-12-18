@@ -1,5 +1,5 @@
 import { state } from '../core/state.js';
-import { renderProjects } from '../components/views.js';
+import { renderProjects } from '../components/ganttView.js';
 import { formatDate } from '../core/utils.js';
 
 /* =========================================
