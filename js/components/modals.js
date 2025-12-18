@@ -1,7 +1,7 @@
 import { state } from '../core/state.js';
 import { updateDate } from '../managers/taskManager.js';
 import { saveState } from '../managers/dataManager.js';
-import { renderProjects } from './views.js';
+import { renderProjects } from './ganttView.js';
 import { formatDate, parseDate } from '../core/utils.js';
 
 /* =========================================
